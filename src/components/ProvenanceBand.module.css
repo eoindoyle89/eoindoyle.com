@@ -1,0 +1,48 @@
+.band {
+  background: var(--band-bg);
+  color: var(--band-text);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+}
+
+.inner {
+  width: 100%;
+  max-width: var(--measure);
+  margin-inline: auto;
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.provenance {
+  color: var(--band-muted);
+}
+
+.provenance a {
+  color: var(--band-sienna);
+  text-decoration: none;
+}
+
+.provenance a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  padding-top: 0.875rem;
+  border-top: 1px solid var(--band-rule);
+}
+
+.links a {
+  color: var(--band-text-soft);
+  text-decoration: none;
+}
+
+.links a:hover {
+  color: var(--band-sienna);
+}
