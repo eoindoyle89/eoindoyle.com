@@ -1,6 +1,7 @@
 ---
 title: "Consulting"
 eyebrow: "SCOPED OFFER"
+description: "Short, fixed-scope builds for B2B teams: outbound systems, marketing websites, customer-facing dashboards, and AI workflow setup."
 email: "eoin@eoindoyle.com"
 ---
 

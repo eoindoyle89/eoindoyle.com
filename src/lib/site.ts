@@ -4,6 +4,7 @@ import { execSync } from "node:child_process";
 // in content/; this is configuration, not prose.
 export const site = {
   name: "Eoin Doyle",
+  url: "https://eoindoyle.com",
   tagline: "Marketer who builds.",
   email: "eoin@eoindoyle.com",
   linkedin: "https://www.linkedin.com/in/eoindoyle",

@@ -23,6 +23,8 @@ export const buildFrontmatterSchema = z.object({
 const basePageSchema = z.object({
   title: z.string().min(1),
   eyebrow: z.string().min(1),
+  // Meta description, also reused for OpenGraph and llms.txt.
+  description: z.string().min(1).max(200),
 });
 
 export const homeFrontmatterSchema = basePageSchema.extend({

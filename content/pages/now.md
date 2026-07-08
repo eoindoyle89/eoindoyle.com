@@ -1,6 +1,7 @@
 ---
 title: "Now"
 eyebrow: "NOW"
+description: "What Eoin Doyle is doing now: interviewing for senior product marketing roles, taking short consulting builds, and building an outbound design agent in public."
 updated: "July 2026"
 note: "This page changes; the rest of the site mostly doesn't. ([What's a now page?](https://nownownow.com/about))"
 ---

@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { Eyebrow } from "@/components/Eyebrow";
 import { InlineMarkdown, Markdown } from "@/components/Markdown";
 import { getNowPage } from "@/lib/content";
+import { pageMetadata } from "@/lib/metadata";
 import styles from "./page.module.css";
 
 export function generateMetadata(): Metadata {
-  return { title: getNowPage().title };
+  return pageMetadata(getNowPage(), "/now");
 }
 
 export default function Now() {
