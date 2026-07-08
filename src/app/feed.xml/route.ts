@@ -11,7 +11,9 @@ function escapeXml(text: string): string {
   return text
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;");
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&apos;");
 }
 
 export function GET(): Response {
@@ -25,8 +27,7 @@ export function GET(): Response {
     <atom:link href="${site.url}/feed.xml" rel="self" type="application/rss+xml"/>
     <description>${escapeXml(home.description)}</description>
     <language>en-US</language>
-${items.join("\n")}
-  </channel>
+${items.length > 0 ? items.join("\n") + "\n" : ""}  </channel>
 </rss>
 `;
   return new Response(xml, {

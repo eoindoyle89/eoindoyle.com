@@ -5,8 +5,12 @@
       "startServerReadyPattern": "Ready",
       "url": [
         "http://localhost:3199/",
+        "http://localhost:3199/now",
+        "http://localhost:3199/work",
         "http://localhost:3199/builds",
-        "http://localhost:3199/cv"
+        "http://localhost:3199/consulting",
+        "http://localhost:3199/cv",
+        "http://localhost:3199/colophon"
       ],
       "numberOfRuns": 3,
       "settings": {

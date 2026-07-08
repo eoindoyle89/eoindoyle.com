@@ -13,6 +13,20 @@ export const site = {
   agent: "claude-code",
 } as const;
 
+// The single source of truth for the site's page routes. The sitemap,
+// llms.txt, and the smoke tests all derive from this list.
+export const routes = [
+  "/",
+  "/now",
+  "/work",
+  "/builds",
+  "/consulting",
+  "/cv",
+  "/colophon",
+] as const;
+
+export type Route = (typeof routes)[number];
+
 export const navItems = [
   { label: "now", href: "/now" },
   { label: "work", href: "/work" },

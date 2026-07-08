@@ -31,9 +31,13 @@ export default function Home() {
   };
   return (
     <>
+      {/* JSON.stringify does not escape "</script>"; the replace keeps any
+          future content value from terminating the script element. */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(person).replaceAll("<", "\\u003c"),
+        }}
       />
       <main className={styles.main}>
         <div>
