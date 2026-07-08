@@ -16,7 +16,10 @@ export function pageMetadata(
   return {
     title,
     description: page.description,
-    alternates: { canonical: path },
+    alternates: {
+      canonical: path,
+      types: { "application/rss+xml": "/feed.xml" },
+    },
     // Page-level openGraph replaces the layout's entirely (Next merges
     // metadata shallowly), so siteName and images repeat here.
     openGraph: {

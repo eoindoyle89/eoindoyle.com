@@ -22,6 +22,15 @@ for (const route of routes) {
   });
 }
 
+test("unknown paths get the custom 404 with the provenance band", async ({
+  page,
+}) => {
+  const response = await page.goto("/no-such-page");
+  expect(response?.status()).toBe(404);
+  await expect(page.locator("h1")).toContainText("path not found");
+  await expect(page.locator("footer")).toContainText("view source");
+});
+
 test("/cv print styles strip the site chrome", async ({ page }) => {
   await page.goto("/cv");
   await page.emulateMedia({ media: "print" });
