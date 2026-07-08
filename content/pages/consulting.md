@@ -1,5 +1,6 @@
 ---
 title: "Consulting"
+eyebrow: "SCOPED OFFER"
 email: "eoin@eoindoyle.com"
 ---
 

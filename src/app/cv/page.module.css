@@ -1,0 +1,129 @@
+.name {
+  margin-bottom: 0.375rem;
+  font-size: clamp(2.25rem, 6vw, 2.875rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.tagline {
+  margin-bottom: 2.5rem;
+  font-size: 1.1875rem;
+  font-style: italic;
+  color: var(--sienna);
+}
+
+.body {
+  max-width: 44rem;
+  font-size: 1.03125rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  text-wrap: pretty;
+}
+
+.body p + p,
+.body ul {
+  margin-top: 0.875rem;
+}
+
+.body h2 {
+  margin: 2.5rem 0 1.125rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: 0.71875rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sienna);
+}
+
+.body h3 {
+  margin: 1.75rem 0 0.25rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.body h3 + p strong {
+  font-family: var(--font-mono);
+  font-size: 0.71875rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.body ul {
+  padding-left: 1.125rem;
+}
+
+.body li + li {
+  margin-top: 0.5rem;
+}
+
+/* Print: a clean document. Site chrome is hidden by the global print rules;
+   this handles the CV's own layout. */
+@media print {
+  .main {
+    max-width: none;
+    padding: 0;
+  }
+
+  .eyebrow {
+    display: none;
+  }
+
+  .name {
+    margin-bottom: 2pt;
+    font-size: 22pt;
+  }
+
+  .tagline {
+    margin-bottom: 14pt;
+    font-size: 11pt;
+    color: var(--ink);
+  }
+
+  .body {
+    max-width: none;
+    font-size: 10pt;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+
+  .body h2 {
+    margin: 14pt 0 7pt;
+    padding-top: 8pt;
+    border-top: 1px solid var(--rule-strong);
+    font-size: 8.5pt;
+    color: var(--ink);
+    break-after: avoid;
+  }
+
+  .body h3 {
+    margin: 10pt 0 2pt;
+    font-size: 12pt;
+    break-after: avoid;
+  }
+
+  .body h3 + p strong {
+    font-size: 8.5pt;
+  }
+
+  .body p + p,
+  .body ul {
+    margin-top: 6pt;
+  }
+
+  .body li + li {
+    margin-top: 3pt;
+  }
+
+  .body li {
+    break-inside: avoid;
+  }
+
+  .body a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+}

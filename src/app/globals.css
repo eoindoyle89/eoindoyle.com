@@ -35,3 +35,21 @@ a {
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
 }
+
+/* Print any page as a clean document: no site chrome, no paper tint. */
+@media print {
+  body {
+    background: #fff;
+  }
+
+  /* !important so element selectors beat the CSS Modules class styles */
+  body > header,
+  body > footer,
+  body > aside {
+    display: none !important;
+  }
+}
+
+@page {
+  margin: 1.6cm;
+}

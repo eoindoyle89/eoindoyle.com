@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Eyebrow } from "@/components/Eyebrow";
 import { Markdown } from "@/components/Markdown";
 import { getBuildCards, getBuildsPage } from "@/lib/content";
 import type { BuildCard } from "@/lib/schemas";
@@ -30,9 +31,9 @@ export default function Builds() {
   const cards = getBuildCards();
   return (
     <main>
-      <p className={styles.eyebrow}>
+      <Eyebrow>
         {page.eyebrow} · {cards.length} {page.entriesLabel}
-      </p>
+      </Eyebrow>
       <h1 className={styles.title}>{page.title}</h1>
       <div className={styles.intro}>
         <Markdown text={page.body} />

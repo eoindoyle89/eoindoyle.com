@@ -22,10 +22,10 @@ export const buildFrontmatterSchema = z.object({
 
 const basePageSchema = z.object({
   title: z.string().min(1),
+  eyebrow: z.string().min(1),
 });
 
 export const homeFrontmatterSchema = basePageSchema.extend({
-  eyebrow: z.string().min(1),
   name: z.string().min(1),
   tagline: z.string().min(1),
   doors: z
@@ -58,11 +58,19 @@ export const consultingFrontmatterSchema = basePageSchema.extend({
 
 export const colophonFrontmatterSchema = basePageSchema;
 
-// The entry count next to the eyebrow is derived from the real card count at
-// render time; only the words are authored.
+// The entry count next to the eyebrow is derived from the real entry count
+// at render time; only the words are authored.
 export const buildsFrontmatterSchema = basePageSchema.extend({
-  eyebrow: z.string().min(1),
   entriesLabel: z.string().min(1),
+});
+
+export const workPageFrontmatterSchema = basePageSchema.extend({
+  entriesLabel: z.string().min(1),
+});
+
+export const cvFrontmatterSchema = basePageSchema.extend({
+  name: z.string().min(1),
+  tagline: z.string().min(1),
 });
 
 // Which page files must exist in content/pages/, and the schema each one
@@ -71,9 +79,11 @@ export const buildsFrontmatterSchema = basePageSchema.extend({
 export const pageSchemas = {
   home: homeFrontmatterSchema,
   now: nowFrontmatterSchema,
+  work: workPageFrontmatterSchema,
   builds: buildsFrontmatterSchema,
   consulting: consultingFrontmatterSchema,
   colophon: colophonFrontmatterSchema,
+  cv: cvFrontmatterSchema,
 } as const;
 
 export type PageSlug = keyof typeof pageSchemas;
@@ -92,6 +102,10 @@ export type HomePage = z.infer<typeof homeFrontmatterSchema> & { body: string };
 export type BuildsPage = z.infer<typeof buildsFrontmatterSchema> & {
   body: string;
 };
+export type WorkPage = z.infer<typeof workPageFrontmatterSchema> & {
+  body: string;
+};
+export type CvPage = z.infer<typeof cvFrontmatterSchema> & { body: string };
 export type NowPage = z.infer<typeof nowFrontmatterSchema> & { body: string };
 export type ConsultingPage = z.infer<typeof consultingFrontmatterSchema> & {
   body: string;

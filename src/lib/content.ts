@@ -7,20 +7,24 @@ import {
   buildsFrontmatterSchema,
   colophonFrontmatterSchema,
   consultingFrontmatterSchema,
+  cvFrontmatterSchema,
   homeFrontmatterSchema,
   nowFrontmatterSchema,
   pageSchemas,
   workFrontmatterSchema,
+  workPageFrontmatterSchema,
 } from "./schemas.ts";
 import type {
   BuildCard,
   BuildsPage,
   ColophonPage,
   ConsultingPage,
+  CvPage,
   HomePage,
   NowPage,
   PageSlug,
   WorkEntry,
+  WorkPage,
 } from "./schemas.ts";
 
 const contentDir = path.join(process.cwd(), "content");
@@ -128,6 +132,22 @@ export function getNowPage(): NowPage {
   const { frontmatter, body } = parseContentFile(
     pagePath("now"),
     nowFrontmatterSchema
+  );
+  return { ...frontmatter, body };
+}
+
+export function getWorkPage(): WorkPage {
+  const { frontmatter, body } = parseContentFile(
+    pagePath("work"),
+    workPageFrontmatterSchema
+  );
+  return { ...frontmatter, body };
+}
+
+export function getCvPage(): CvPage {
+  const { frontmatter, body } = parseContentFile(
+    pagePath("cv"),
+    cvFrontmatterSchema
   );
   return { ...frontmatter, body };
 }
