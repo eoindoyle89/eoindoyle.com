@@ -40,3 +40,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .gstack/
+
+# test and audit output
+/test-results/
+/playwright-report/
+/.lighthouseci/
+/.lighthouseci-reports/
