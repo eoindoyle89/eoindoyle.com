@@ -1,0 +1,17 @@
+# Weekly dependency updates, per the security posture in CLAUDE.md: keep
+# dependencies minimal and Dependabot-patched. Minor and patch bumps arrive
+# grouped as one PR to keep the noise down; majors arrive alone.
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      minor-and-patch:
+        update-types: ["minor", "patch"]
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
