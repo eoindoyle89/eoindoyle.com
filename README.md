@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# eoindoyle.com
 
-## Getting Started
+The personal site of Eoin Doyle. Marketer who builds.
 
-First, run the development server:
+Seven pages of static content, built by AI agents that I direct. This repo is deliberately public, agent instructions included, because the site is its own case study: I'm a marketer who builds with AI tools, and this is the working. The provenance band at the bottom of every page shows the build date, the agent, and the commit that produced it, linked back here.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## How it's built
+
+Copy is authored as markdown in `/content` with typed frontmatter. A zod schema validates every file during the build; a malformed entry fails the build rather than shipping. That is the guardrail model: I direct the agents and do not review code line by line, so correctness checks are mechanical.
+
+The site is Next.js with static generation only. No server code, no database, no auth. Seven pages of text need none of those, and anyone reading this repo should conclude the builder knew what not to build. The design is a bespoke token system (paper, ink, one sienna accent) in a single CSS file, with Newsreader for the human layer and the system mono stack for the machine layer.
+
+The engineering decisions are recorded as ADRs in [docs/](docs/). The agents work from [CLAUDE.md](CLAUDE.md).
+
+## Quality gates
+
+CI runs on every push: ESLint, typechecking, content schema validation, a production build, Playwright smoke tests over every route, and Lighthouse CI with performance and accessibility budgets at 0.95. There are no unit tests; on a static content site they would test the framework, not the work.
+
+## Running it
+
+```
+npm ci
+npm run dev        # local dev
+npm run build      # validates all content, then builds
+npx playwright test
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Machines welcome
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+robots.txt allows the major AI crawlers by name, [llms.txt](https://eoindoyle.com/llms.txt) maps the site for language models, and analytics are cookieless. That is positioning, not oversight.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## License
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The code is MIT ([LICENSE](LICENSE)). The written copy and the photographs are not: all rights reserved.
