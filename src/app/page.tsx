@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Eyebrow } from "@/components/Eyebrow";
 import { InlineMarkdown, Markdown } from "@/components/Markdown";
 import { getHomePage } from "@/lib/content";
 import headshot from "../../assets/DSC08435.jpg";
@@ -15,7 +16,7 @@ export default function Home() {
     <>
       <main className={styles.main}>
         <div>
-          <p className={styles.eyebrow}>{home.eyebrow}</p>
+          <Eyebrow className={styles.eyebrow}>{home.eyebrow}</Eyebrow>
           <h1 className={styles.tagline}>
             <InlineMarkdown text={home.tagline} />
           </h1>

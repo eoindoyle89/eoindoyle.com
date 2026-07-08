@@ -1,5 +1,6 @@
 ---
 title: "Now"
+eyebrow: "NOW"
 updated: "July 2026"
 note: "This page changes; the rest of the site mostly doesn't. ([What's a now page?](https://nownownow.com/about))"
 ---

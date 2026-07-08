@@ -1,5 +1,6 @@
 ---
 title: "How this site is made"
+eyebrow: "COLOPHON"
 ---
 
 Written and structured by me. Built by Claude Code. Next.js, hosted on Vercel, measured with PostHog. The repo is public, including the instructions the agents work from.
