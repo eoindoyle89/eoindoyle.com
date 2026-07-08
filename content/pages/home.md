@@ -1,6 +1,7 @@
 ---
 title: "Eoin Doyle"
 eyebrow: "B2B MARKETING · AI SYSTEMS"
+description: "Marketer who builds. Fifteen years in B2B marketing across fintech, SaaS, and sportstech, now building marketing systems with AI agents in public."
 name: "Eoin Doyle"
 tagline: "Marketer who *builds*."
 doors:

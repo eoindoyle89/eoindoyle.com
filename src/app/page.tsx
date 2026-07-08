@@ -1,8 +1,11 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Eyebrow } from "@/components/Eyebrow";
 import { InlineMarkdown, Markdown } from "@/components/Markdown";
 import { getHomePage } from "@/lib/content";
+import { pageMetadata } from "@/lib/metadata";
+import { site } from "@/lib/site";
 import headshot from "../../assets/DSC08435.jpg";
 import styles from "./page.module.css";
 
@@ -10,10 +13,28 @@ import styles from "./page.module.css";
 // the build, so the displayed path cannot drift silently.
 const headshotRepoPath = "assets/DSC08435.jpg";
 
+export function generateMetadata(): Metadata {
+  return pageMetadata(getHomePage(), "/", { absoluteTitle: true });
+}
+
 export default function Home() {
   const home = getHomePage();
+  const person = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: site.name,
+    // The tagline, stripped of its markdown emphasis and period.
+    jobTitle: home.tagline.replaceAll("*", "").replace(/\.$/, ""),
+    url: site.url,
+    image: `${site.url}${headshot.src}`,
+    sameAs: [site.linkedin, site.github],
+  };
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }}
+      />
       <main className={styles.main}>
         <div>
           <Eyebrow className={styles.eyebrow}>{home.eyebrow}</Eyebrow>

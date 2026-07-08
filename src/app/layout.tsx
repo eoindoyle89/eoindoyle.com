@@ -20,11 +20,17 @@ const newsreader = Newsreader({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
   title: {
     default: site.name,
     template: `%s · ${site.name}`,
   },
   description: site.tagline,
+  openGraph: {
+    siteName: site.name,
+    type: "website",
+    images: "/og.png",
+  },
 };
 
 export default function RootLayout({

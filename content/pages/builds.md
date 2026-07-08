@@ -1,6 +1,7 @@
 ---
 title: "Builds"
 eyebrow: "SHIPPED ARTIFACTS"
+description: "Things Eoin Doyle has shipped with AI and no-code tools, from an outbound campaign design agent to this website. Each card says what he did and what he didn't."
 entriesLabel: "ENTRIES"
 ---
 

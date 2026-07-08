@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { Eyebrow } from "@/components/Eyebrow";
 import { Markdown } from "@/components/Markdown";
 import { getBuildCards, getBuildsPage } from "@/lib/content";
+import { pageMetadata } from "@/lib/metadata";
 import type { BuildCard } from "@/lib/schemas";
 import styles from "./page.module.css";
 
 export function generateMetadata(): Metadata {
-  return { title: getBuildsPage().title };
+  return pageMetadata(getBuildsPage(), "/builds");
 }
 
 const statusDisplay: Record<

@@ -1,6 +1,7 @@
 ---
 title: "CV"
 eyebrow: "GENERAL-PURPOSE MASTER"
+description: "The master CV of Eoin Doyle: 15+ years in B2B marketing across fintech, SaaS, and sportstech, and a founder who ships with AI. Print-friendly."
 name: "Eoin Doyle"
 tagline: "Marketer who builds."
 ---

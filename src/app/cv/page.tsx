@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { Eyebrow } from "@/components/Eyebrow";
 import { Markdown } from "@/components/Markdown";
 import { getCvPage } from "@/lib/content";
+import { pageMetadata } from "@/lib/metadata";
 import styles from "./page.module.css";
 
 export function generateMetadata(): Metadata {
-  return { title: getCvPage().title };
+  return pageMetadata(getCvPage(), "/cv");
 }
 
 export default function Cv() {
