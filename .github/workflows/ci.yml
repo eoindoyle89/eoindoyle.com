@@ -26,6 +26,11 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      # next-env.d.ts is generated, not committed (Next 16 convention);
+      # typegen creates it plus the route types tsc needs on a fresh checkout.
+      - name: Generate types
+        run: npx next typegen
+
       - name: Typecheck
         run: npx tsc --noEmit
 
