@@ -4,12 +4,13 @@ import type { NextConfig } from "next";
 // 'unsafe-inline' for scripts and styles is required by Next itself: the App
 // Router bootstraps with inline scripts, and next/image sets inline style
 // attributes. Dev additionally needs 'unsafe-eval' for hot reloading. The
-// PostHog hosts cover cookieless analytics: events go to the US ingestion
-// host, and posthog-js lazy-loads feature bundles from the assets host.
+// PostHog hosts cover cookieless analytics: events go to the EU ingestion
+// host (the project is EU-hosted), and posthog-js lazy-loads feature
+// bundles from the assets host.
 const scriptSrc =
   process.env.NODE_ENV === "development"
     ? "'self' 'unsafe-inline' 'unsafe-eval'"
-    : "'self' 'unsafe-inline' https://us-assets.i.posthog.com";
+    : "'self' 'unsafe-inline' https://eu-assets.i.posthog.com";
 
 const contentSecurityPolicy = [
   "default-src 'self'",
@@ -17,7 +18,7 @@ const contentSecurityPolicy = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data:",
   "font-src 'self'",
-  "connect-src 'self' https://us.i.posthog.com https://us-assets.i.posthog.com",
+  "connect-src 'self' https://eu.i.posthog.com https://eu-assets.i.posthog.com",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",

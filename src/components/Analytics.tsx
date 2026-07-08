@@ -16,9 +16,12 @@ export function Analytics() {
     if (!key || initialized) return;
     initialized = true;
     posthog.init(key, {
-      api_host: "https://us.i.posthog.com",
+      api_host: "https://eu.i.posthog.com",
       defaults: "2025-05-24",
       persistence: "memory",
+      // Counting visits is the whole job; recording sessions is not, and
+      // would undercut the no-consent-needed claim in the colophon.
+      disable_session_recording: true,
     });
   }, []);
   return null;
