@@ -10,4 +10,6 @@ The copy was drafted against a style guide whose main job is keeping AI writing 
 
 Machines are welcome to read this site. robots.txt allows the major AI crawlers by name, and [llms.txt](/llms.txt) gives them the map.
 
+Analytics are cookieless: PostHog runs with memory persistence, the site sets no cookies, and there is nothing to ask consent for.
+
 <!-- Phase 2 addition: link to the outbound agent's published context and build log. -->

@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Newsreader } from "next/font/google";
+import { Analytics } from "@/components/Analytics";
 import { ProvenanceBand } from "@/components/ProvenanceBand";
 import { SiteHeader } from "@/components/SiteHeader";
 import { site } from "@/lib/site";
@@ -31,6 +32,14 @@ export const metadata: Metadata = {
     type: "website",
     images: "/og.png",
   },
+  alternates: {
+    types: { "application/rss+xml": "/feed.xml" },
+  },
+};
+
+export const viewport: Viewport = {
+  // --paper from tokens.css; meta tags cannot read CSS custom properties.
+  themeColor: "#FAF7F1",
 };
 
 export default function RootLayout({
@@ -46,6 +55,7 @@ export default function RootLayout({
         <SiteHeader />
         {children}
         <ProvenanceBand />
+        <Analytics />
       </body>
     </html>
   );
