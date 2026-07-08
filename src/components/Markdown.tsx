@@ -18,19 +18,29 @@ export function InlineMarkdown({ text }: { text: string }): ReactNode {
     }
     const [full, linkText, href, strong, emphasis] = match;
     if (strong !== undefined) {
-      nodes.push(<strong key={match.index}>{strong}</strong>);
+      nodes.push(
+        <strong key={match.index}>
+          <InlineMarkdown text={strong} />
+        </strong>
+      );
     } else if (emphasis !== undefined) {
-      nodes.push(<em key={match.index}>{emphasis}</em>);
-    } else if (href.startsWith("/")) {
+      nodes.push(
+        <em key={match.index}>
+          <InlineMarkdown text={emphasis} />
+        </em>
+      );
+    } else if (href.startsWith("/") && !href.includes(".")) {
+      // Dotted paths (/llms.txt, /feed.xml) are route handlers, not pages;
+      // next/link would prefetch them expecting an RSC payload.
       nodes.push(
         <Link key={match.index} href={href}>
-          {linkText}
+          <InlineMarkdown text={linkText} />
         </Link>
       );
     } else {
       nodes.push(
         <a key={match.index} href={href}>
-          {linkText}
+          <InlineMarkdown text={linkText} />
         </a>
       );
     }
@@ -42,28 +52,56 @@ export function InlineMarkdown({ text }: { text: string }): ReactNode {
   return <>{nodes}</>;
 }
 
-function Block({ block, index }: { block: string; index: number }): ReactNode {
-  if (block.startsWith("### ")) {
-    return <h3>{<InlineMarkdown text={block.slice(4)} />}</h3>;
+// Bullet items may wrap onto continuation lines; a new item starts only at
+// a dash.
+function listItems(lines: string[]): string[] {
+  const items: string[] = [];
+  for (const line of lines) {
+    if (line.startsWith("- ")) {
+      items.push(line.slice(2));
+    } else if (items.length > 0) {
+      items[items.length - 1] += ` ${line}`;
+    }
   }
-  if (block.startsWith("## ")) {
-    return <h2>{<InlineMarkdown text={block.slice(3)} />}</h2>;
+  return items;
+}
+
+function Block({ block }: { block: string }): ReactNode {
+  const lines = block
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0);
+  const [first, ...rest] = lines;
+  const headingLevel = first.startsWith("### ")
+    ? 3
+    : first.startsWith("## ")
+      ? 2
+      : 0;
+  if (headingLevel > 0) {
+    const HeadingTag = headingLevel === 3 ? "h3" : "h2";
+    return (
+      <>
+        <HeadingTag>
+          <InlineMarkdown text={first.slice(headingLevel + 1)} />
+        </HeadingTag>
+        {rest.length > 0 && <Block block={rest.join("\n")} />}
+      </>
+    );
   }
-  const lines = block.split("\n").map((line) => line.trim());
-  if (lines.every((line) => line.startsWith("- "))) {
+  if (first.startsWith("- ")) {
     return (
       <ul>
-        {lines.map((line, i) => (
+        {listItems(lines).map((item, i) => (
           <li key={i}>
-            <InlineMarkdown text={line.slice(2)} />
+            <InlineMarkdown text={item} />
           </li>
         ))}
       </ul>
     );
   }
   return (
-    <p key={index}>
-      <InlineMarkdown text={block} />
+    <p>
+      <InlineMarkdown text={lines.join(" ")} />
     </p>
   );
 }
@@ -81,7 +119,7 @@ export function Markdown({ text }: { text: string }): ReactNode {
   return (
     <>
       {blocks.map((block, i) => (
-        <Block key={i} block={block} index={i} />
+        <Block key={i} block={block} />
       ))}
     </>
   );
