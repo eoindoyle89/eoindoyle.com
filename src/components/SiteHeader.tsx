@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { NavLinks } from "./NavLinks";
 import { navItems, site } from "@/lib/site";
 import styles from "./SiteHeader.module.css";
 
@@ -9,11 +10,7 @@ export function SiteHeader() {
         {site.name}
       </Link>
       <nav className={styles.nav} aria-label="Site">
-        {navItems.map(({ label, href }) => (
-          <Link key={href} href={href}>
-            {label}
-          </Link>
-        ))}
+        <NavLinks items={navItems} activeClassName={styles.active} />
       </nav>
     </header>
   );

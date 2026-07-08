@@ -37,6 +37,14 @@ export const homeFrontmatterSchema = basePageSchema.extend({
     )
     .length(3),
   footerNote: z.string().min(1),
+  // Authored parts of the headshot metadata block. The file path and pixel
+  // dimensions are real data from the static import, never typed here.
+  headshot: z.object({
+    alt: z.string().min(1),
+    colorSpace: z.string().min(1),
+    usage: z.string().min(1),
+    caption: z.string().min(1),
+  }),
 });
 
 export const nowFrontmatterSchema = basePageSchema.extend({
@@ -50,12 +58,20 @@ export const consultingFrontmatterSchema = basePageSchema.extend({
 
 export const colophonFrontmatterSchema = basePageSchema;
 
+// The entry count next to the eyebrow is derived from the real card count at
+// render time; only the words are authored.
+export const buildsFrontmatterSchema = basePageSchema.extend({
+  eyebrow: z.string().min(1),
+  entriesLabel: z.string().min(1),
+});
+
 // Which page files must exist in content/pages/, and the schema each one
 // must satisfy. The loaders and the validation script both read this, so
 // there is a single source of truth for the pairing.
 export const pageSchemas = {
   home: homeFrontmatterSchema,
   now: nowFrontmatterSchema,
+  builds: buildsFrontmatterSchema,
   consulting: consultingFrontmatterSchema,
   colophon: colophonFrontmatterSchema,
 } as const;
@@ -73,6 +89,9 @@ export type BuildCard = z.infer<typeof buildFrontmatterSchema> & {
 };
 
 export type HomePage = z.infer<typeof homeFrontmatterSchema> & { body: string };
+export type BuildsPage = z.infer<typeof buildsFrontmatterSchema> & {
+  body: string;
+};
 export type NowPage = z.infer<typeof nowFrontmatterSchema> & { body: string };
 export type ConsultingPage = z.infer<typeof consultingFrontmatterSchema> & {
   body: string;
