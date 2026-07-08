@@ -6,11 +6,16 @@ import { site } from "@/lib/site";
 import "./tokens.css";
 import "./globals.css";
 
+// display: "optional" keeps the largest text paint at first render: cached
+// and fast visits get Newsreader, a slow first visit keeps the
+// metrics-adjusted Georgia fallback instead of repainting late. This is
+// what holds the Lighthouse LCP budget on 4G.
 const newsreader = Newsreader({
   subsets: ["latin"],
   style: ["normal", "italic"],
   axes: ["opsz"],
   fallback: ["Georgia"],
+  display: "optional",
   variable: "--font-serif",
 });
 
