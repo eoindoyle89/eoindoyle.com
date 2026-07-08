@@ -29,9 +29,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={newsreader.variable}>
+      {/* Pages render their own <main>; Home appends its ink note strip
+          after it, flush against the band. */}
       <body>
         <SiteHeader />
-        <main>{children}</main>
+        {children}
         <ProvenanceBand />
       </body>
     </html>

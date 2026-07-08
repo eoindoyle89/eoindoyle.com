@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import { z } from "zod";
 import {
   buildFrontmatterSchema,
+  buildsFrontmatterSchema,
   colophonFrontmatterSchema,
   consultingFrontmatterSchema,
   homeFrontmatterSchema,
@@ -13,6 +14,7 @@ import {
 } from "./schemas.ts";
 import type {
   BuildCard,
+  BuildsPage,
   ColophonPage,
   ConsultingPage,
   HomePage,
@@ -126,6 +128,14 @@ export function getNowPage(): NowPage {
   const { frontmatter, body } = parseContentFile(
     pagePath("now"),
     nowFrontmatterSchema
+  );
+  return { ...frontmatter, body };
+}
+
+export function getBuildsPage(): BuildsPage {
+  const { frontmatter, body } = parseContentFile(
+    pagePath("builds"),
+    buildsFrontmatterSchema
   );
   return { ...frontmatter, body };
 }

@@ -36,5 +36,5 @@
      root layout. The machine layer uses the system mono stack: one webfont
      on the whole site. */
   --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
-  --measure: 44rem;          /* content column width */
+  --measure: 60rem;          /* content column width, 960px in the mockup */
 }

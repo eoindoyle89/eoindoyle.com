@@ -1,66 +1,71 @@
 import Image from "next/image";
+import Link from "next/link";
+import { InlineMarkdown, Markdown } from "@/components/Markdown";
+import { getHomePage } from "@/lib/content";
+import headshot from "../../assets/DSC08435.jpg";
 import styles from "./page.module.css";
 
+// Must match the import path above. If the file moves, the import breaks
+// the build, so the displayed path cannot drift silently.
+const headshotRepoPath = "assets/DSC08435.jpg";
+
 export default function Home() {
+  const home = getHomePage();
   return (
-    <div className={styles.page}>
+    <>
       <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+        <div>
+          <p className={styles.eyebrow}>{home.eyebrow}</p>
+          <h1 className={styles.tagline}>
+            <InlineMarkdown text={home.tagline} />
+          </h1>
+          <div className={styles.intro}>
+            <Markdown text={home.body} />
+          </div>
+          <nav className={styles.doors} aria-label="Sections">
+            {home.doors.map(({ label, href }) => (
+              <Link key={href} href={href} className={styles.door}>
+                <span className={styles.doorLabel}>{label}</span>
+                <span className={styles.doorPath}>{href} →</span>
+              </Link>
+            ))}
+          </nav>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className={styles.aside}>
+          <figure className={styles.figure}>
+            <span className={`${styles.tick} ${styles.tickTl}`} aria-hidden />
+            <span className={`${styles.tick} ${styles.tickTr}`} aria-hidden />
+            <span className={`${styles.tick} ${styles.tickBl}`} aria-hidden />
+            <span className={`${styles.tick} ${styles.tickBr}`} aria-hidden />
+            <div className={styles.frame}>
+              <Image
+                src={headshot}
+                alt={home.headshot.alt}
+                placeholder="blur"
+                sizes="(max-width: 640px) 210px, 224px"
+                className={styles.photo}
+              />
+            </div>
+          </figure>
+          <dl className={styles.meta}>
+            <dt>file</dt>
+            <dd>{headshotRepoPath}</dd>
+            <dt>dims</dt>
+            <dd>
+              {headshot.width} × {headshot.height} · {home.headshot.colorSpace}
+            </dd>
+            <dt>usage</dt>
+            <dd>
+              {home.headshot.usage} · {home.headshot.caption}
+            </dd>
+          </dl>
         </div>
       </main>
-    </div>
+      <aside className={styles.noteStrip}>
+        <p className={styles.note}>
+          <InlineMarkdown text={home.footerNote} />
+        </p>
+      </aside>
+    </>
   );
 }
