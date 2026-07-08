@@ -1,0 +1,40 @@
+/* 3a Machine Layer tokens, extracted from the mockup 2026-07-08.
+   The whole design system lives here; no design values elsewhere. */
+
+:root {
+  /* paper layer */
+  --paper: #FAF7F1;          /* page background */
+  --paper-raised: #F5EDE2;   /* cards / raised surfaces */
+  --ink: #1D1915;            /* primary text; also the machine-band background */
+  --text-secondary: #57503F;
+  --text-muted: #93897A;     /* metadata, card numbers */
+  --rule: #E8E1D3;           /* borders and hairlines on paper */
+  --rule-strong: #CDC5B4;
+
+  /* accent */
+  --sienna: #9C4A2C;         /* eyebrows, links, "in progress" */
+  --sienna-deep: #A05A2C;
+
+  /* machine band (dark) internals */
+  --band-bg: var(--ink);
+  --band-text: #F3EEE4;
+  --band-text-soft: #E8E1D3;
+  --band-muted: #A89F8D;
+  --band-muted-deep: #7A7263;
+  --band-rule: #37312A;
+  --band-sienna: #D08056;    /* links inside the dark band */
+
+  /* status */
+  --status-shipped: #3D7A4E;     /* filled dot ● */
+  --status-progress: #9C4A2C;    /* filled dot ● */
+  --status-designing: #C9C1B2;   /* outline dot ○ */
+}
+
+/* type and layout, beyond the mockup block */
+:root {
+  /* --font-serif is set by next/font (Newsreader, Georgia fallback) in the
+     root layout. The machine layer uses the system mono stack: one webfont
+     on the whole site. */
+  --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
+  --measure: 44rem;          /* content column width */
+}
