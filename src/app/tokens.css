@@ -7,7 +7,9 @@
   --paper-raised: #F5EDE2;   /* cards / raised surfaces */
   --ink: #1D1915;            /* primary text; also the machine-band background */
   --text-secondary: #57503F;
-  --text-muted: #93897A;     /* metadata, card numbers */
+  --text-muted: #736B5D;     /* metadata, card numbers; darkened from the
+                                mockup's #93897A to clear WCAG AA 4.5:1
+                                contrast on paper */
   --rule: #E8E1D3;           /* borders and hairlines on paper */
   --rule-strong: #CDC5B4;
 

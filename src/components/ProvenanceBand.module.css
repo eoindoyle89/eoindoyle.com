@@ -33,12 +33,14 @@
   color: var(--band-sienna);
 }
 
+/* --band-muted rather than the mockup's --band-muted-deep: the deep tone
+   is 3.6:1 on ink, short of WCAG AA 4.5:1 */
 .provenance {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem 1.25rem;
   font-size: 0.71875rem;
-  color: var(--band-muted-deep);
+  color: var(--band-muted);
 }
 
 .value {

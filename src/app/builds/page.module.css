@@ -62,8 +62,11 @@
   color: var(--status-shipped);
 }
 
+/* --text-muted rather than --status-designing: the pale token is 1.7:1 on
+   paper as text, far short of WCAG AA; the outline dot still reads as the
+   not-yet-shipped state */
 .statusDesigning {
-  color: var(--status-designing);
+  color: var(--text-muted);
 }
 
 .statusNote {
