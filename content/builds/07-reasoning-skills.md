@@ -1,5 +1,5 @@
 ---
-title: "Reasoning skills"
+title: "AI reasoning skills"
 number: 7
 status: "shipped"
 repo: "https://github.com/eoindoyle89/reasoning-skills"
