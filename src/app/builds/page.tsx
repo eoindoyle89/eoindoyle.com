@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Eyebrow } from "@/components/Eyebrow";
+import { ExternalLink } from "@/components/ExternalLink";
 import { Markdown } from "@/components/Markdown";
 import { getBuildCards, getBuildsPage } from "@/lib/content";
 import { pageMetadata } from "@/lib/metadata";
@@ -65,9 +66,9 @@ export default function Builds() {
                 <h2 className={styles.cardTitle}>{card.title}</h2>
                 <Markdown text={card.body} />
                 {card.repo !== undefined && (
-                  <a className={styles.repoLink} href={card.repo}>
+                  <ExternalLink className={styles.repoLink} href={card.repo}>
                     {card.repo.replace("https://github.com/", "")} ↗
-                  </a>
+                  </ExternalLink>
                 )}
               </div>
             </li>

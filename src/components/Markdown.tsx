@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { ExternalLink } from "@/components/ExternalLink";
 
 // Renders the subset of markdown the content files actually use: paragraphs,
 // ## and ### headings, dash bullet lists, inline [text](href) links,
@@ -39,9 +40,9 @@ export function InlineMarkdown({ text }: { text: string }): ReactNode {
       );
     } else {
       nodes.push(
-        <a key={match.index} href={href}>
+        <ExternalLink key={match.index} href={href}>
           <InlineMarkdown text={linkText} />
-        </a>
+        </ExternalLink>
       );
     }
     cursor = match.index + full.length;
