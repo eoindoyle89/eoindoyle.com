@@ -2,6 +2,22 @@
 
 Notable changes to eoindoyle.com. Versions are MAJOR.MINOR.PATCH.MICRO; dates are YYYY-MM-DD.
 
+## [1.0.1.0] - 2026-07-29
+
+### Added
+
+- Build card for the HeadCoach website (headcoachapp.com), linking both the live site and its public repo.
+- Build card for the marketing agent system.
+
+### Changed
+
+- Renamed the Claude skills card to "AI reasoning skills" and repointed it to the reasoning-skills repo, following the repo rename from claude-skills on GitHub.
+- Reordered the builds list.
+
+### Fixed
+
+- External links (build card repos, footer links, external links in copy) now open in a new tab with rel="noopener noreferrer". Internal links and mailto are unchanged.
+
 ## [1.0.0.0] - 2026-07-08
 
 ### Added
