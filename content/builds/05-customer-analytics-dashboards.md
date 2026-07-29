@@ -1,6 +1,6 @@
 ---
 title: "Customer analytics dashboards"
-number: 6
+number: 5
 status: "shipped"
 ---
 

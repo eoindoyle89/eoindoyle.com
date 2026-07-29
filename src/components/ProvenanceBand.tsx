@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ExternalLink } from "@/components/ExternalLink";
 import { getProvenance, site } from "@/lib/site";
 import styles from "./ProvenanceBand.module.css";
 
@@ -9,8 +10,8 @@ export function ProvenanceBand() {
       <div className={styles.inner}>
         <nav className={styles.links} aria-label="Footer">
           <a href={`mailto:${site.email}`}>{site.email}</a>
-          <a href={site.linkedin}>linkedin</a>
-          <a href={site.github}>github</a>
+          <ExternalLink href={site.linkedin}>linkedin</ExternalLink>
+          <ExternalLink href={site.github}>github</ExternalLink>
           <Link href="/cv">cv</Link>
           <Link href="/colophon">colophon</Link>
         </nav>
@@ -24,17 +25,17 @@ export function ProvenanceBand() {
           {sha !== null && (
             <span>
               commit{" "}
-              <a
+              <ExternalLink
                 className={styles.commit}
                 href={`${site.repoUrl}/commit/${sha}`}
               >
                 {sha.slice(0, 7)}
-              </a>
+              </ExternalLink>
             </span>
           )}
-          <a className={styles.source} href={site.repoUrl}>
+          <ExternalLink className={styles.source} href={site.repoUrl}>
             view source ↗
-          </a>
+          </ExternalLink>
         </p>
       </div>
     </footer>
