@@ -6,4 +6,4 @@ builtInPublic: true
 repo: "https://github.com/eoindoyle89/marketing-agent-system"
 ---
 
-A system that gives marketing agents durable company context instead of chat memory. A setup agent captures positioning, audience, proof, and voice into a private store, then fifty specialist skills draft against it. The agents draft and recommend; a human approves and publishes anything public-facing. The repo is public and growing as I package skills out of my private vault.
+A public agent system for scaling marketing work without relying on chat memory. It now has a first-run setup flow, a durable `.agent-context/` store, a context-update agent for new company information, a marketing orchestrator, campaign planner, marketing UX skill, review gates, and a library of 56 specialist skills. The shared protocol forces source checks, approval boundaries, and first-principles task diagnosis before agents draft, review, plan, or recommend. Humans still approve anything public-facing.
